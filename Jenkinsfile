@@ -6,5 +6,11 @@ pipeline {
 				git 'https://github.com/royzsantos/CaseStudy'
             } 
         }
+        stage('Compile') {
+        	steps {
+        		bat 'mvn compile'
+        	}
+        }
+        
     }
 } 
