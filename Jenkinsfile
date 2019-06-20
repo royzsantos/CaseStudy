@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('SCM Checkout') { 
             steps {
-				bat 'git https://github.com/royzsantos/CaseStudy'
+				git 'https://github.com/royzsantos/CaseStudy'
             } 
         }
     }
