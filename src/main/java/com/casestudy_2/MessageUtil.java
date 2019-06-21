@@ -1,8 +1,10 @@
 package com.casestudy_2;
 
+import java.lang.System.Logger;
+
 public class MessageUtil {
 
-	public String message;
+	private String message;
 	
 	public MessageUtil(String message){
 		this.message = message;
