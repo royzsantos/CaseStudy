@@ -6,7 +6,7 @@ pipeline {
 				git 'https://github.com/royzsantos/CaseStudy'
             } 
         }
-        stage('Compile') {
+        stage('Build') {
         	steps {
         		bat 'mvn compile'
         	}
@@ -16,5 +16,10 @@ pipeline {
         		bat 'mvn test'
         	}
         }
+        stage('Code Quality') {
+        	steps {
+        		bat 'mvn sonar:sonar'
+        	}
+        }        
     }
 } 
