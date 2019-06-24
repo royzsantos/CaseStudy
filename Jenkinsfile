@@ -3,7 +3,9 @@ pipeline {
     stages {
         stage('Build') {
         	steps {
+    			bat 'mvn clean'
         		bat 'mvn compile'
+        		bat 'mvn test-compile'
         	}
         }
         stage('Unit Test') {
@@ -15,6 +17,11 @@ pipeline {
         	steps {
         		bat 'mvn sonar:sonar'
         	}
-        }        
+        }
+        stage('Upload') {
+        	steps {
+        		bat 'mvn install'
+        	}
+        }
     }
 } 
