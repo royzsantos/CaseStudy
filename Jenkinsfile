@@ -1,27 +1,35 @@
-pipeline {
-    agent any 
-    stages {
-        stage('Build') {
-        	steps {
-    			bat 'mvn clean'
-        		bat 'mvn compile'
-        		bat 'mvn test-compile'
-        	}
-        }
-        stage('Unit Test') {
-        	steps {
-        		bat 'mvn test'
-        	}
-        }
-        stage('Code Quality') {
-        	steps {
-        		bat 'mvn sonar:sonar'
-        	}
-        }
-        stage('Upload') {
-        	steps {
-        		bat 'mvn install'
-        	}
-        }
-    }
-} 
+node {
+	def server
+	def buildInfo
+	def rtMaven
+	
+	stage ('Artifactory Configuration') {
+		server = Artifactory.server Artifactory
+		
+		rtMaven = Artifactory.newMavenBuild()
+		rtMaven.tool = Maven
+		rtMaven.deployer releaseRepo: 'libs-release-local', snapshotRepo: 'libs-snapshot-local', server: server
+		rtMaven.resolver releaseRepo: 'libs-release', snapshotRepo: 'libs-snapshot', server: server
+		rtMaven.deployer.deployArtifacts = false
+		
+		buildInfo = Artifactory.newBuildInfo()		
+	}
+	
+	stage ('Build') {
+		rtMaven.run pom: 'CaseStudy_2/pom.xml', goals: 'clean'
+		rtMaven.run pom: 'CaseStudy_2/pom.xml', goals: 'compile'
+		rtMaven.run pom: 'CaseStudy_2/pom.xml', goals: 'test-compile'
+	}
+	
+	stage ('Unit Test') {
+		rtMaven.run pom: 'CaseStudy_2/pom.xml', goals: 'test'
+	}
+	
+	stage ('Code Quality') {
+		rtMaven.run pom: 'CaseStudy_2/pom.xml', goals: 'sonar:sonar'
+	}
+	
+	stage ('Upload') {
+		rtMaven.run pom: 'CaseStudy_2/pom.xml', goals: 'install', buildInfo: buildInfo
+	}
+}
