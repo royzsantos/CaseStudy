@@ -20,8 +20,8 @@ node {
 	}    
 	
 	stage ('Build') {
-		rtMaven.run pom: 'CaseStudy_2/pom.xml', goals: 'clean'
-		rtMaven.run pom: 'CaseStudy_2/pom.xml', goals: 'compile'
-		rtMaven.run pom: 'CaseStudy_2/pom.xml', goals: 'test-compile'
+		rtMaven.run pom: './pom.xml', goals: 'clean'
+		rtMaven.run pom: './pom.xml', goals: 'compile'
+		rtMaven.run pom: './pom.xml', goals: 'test-compile'
 	}
 }
