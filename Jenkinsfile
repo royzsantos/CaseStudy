@@ -17,23 +17,6 @@ node {
 		rtMaven.deployer.deployArtifacts = false
 		
 		buildInfo = Artifactory.newBuildInfo()		
-	}
+	}    
 	
-	stage ('Build') {
-		rtMaven.run pom: 'CaseStudy_2/pom.xml', goals: 'clean'
-		rtMaven.run pom: 'CaseStudy_2/pom.xml', goals: 'compile'
-		rtMaven.run pom: 'CaseStudy_2/pom.xml', goals: 'test-compile'
-	}
-	
-	stage ('Unit Test') {
-		rtMaven.run pom: 'CaseStudy_2/pom.xml', goals: 'test'
-	}
-	
-	stage ('Code Quality') {
-		rtMaven.run pom: 'CaseStudy_2/pom.xml', goals: 'sonar:sonar'
-	}
-	
-	stage ('Upload') {
-		rtMaven.run pom: 'CaseStudy_2/pom.xml', goals: 'install', buildInfo: buildInfo
-	}
 }
