@@ -3,10 +3,6 @@ node {
 	def buildInfo
 	def rtMaven
 	
-	triggers {
-		pollSCM '* * * * *'
-	}
-	
 	stage ('Clone') {
 		git url: 'https://github.com/royzsantos/CaseStudy.git'
 	}
