@@ -3,6 +3,10 @@ node {
 	def buildInfo
 	def rtMaven
 	
+	triggers {
+		pollSCM '* * * * *'
+	}
+	
 	stage ('Clone') {
 		git url: 'https://github.com/royzsantos/CaseStudy.git'
 	}
@@ -37,7 +41,6 @@ node {
 		rtMaven.run pom: './pom.xml', goals: 'install', buildInfo: buildInfo
 		rtMaven.deployer.deployArtifacts buildInfo
 		server.publishBuildInfo buildInfo
-		//
 	}
 	
 }
