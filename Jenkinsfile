@@ -17,6 +17,7 @@ node {
 		rtMaven.deployer.deployArtifacts = false
 		
 		buildInfo = Artifactory.newBuildInfo()		
-	}    
+		//
+	}
 	
 }
