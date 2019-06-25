@@ -24,4 +24,16 @@ node {
 		rtMaven.run pom: './pom.xml', goals: 'compile'
 		rtMaven.run pom: './pom.xml', goals: 'test-compile'
 	}
+
+	stage ('Unit Test') {
+		rtMaven.run pom: './pom.xml', goals: 'test'
+	}
+	
+	stage ('Code Quality') {
+		rtMaven.run pom: './pom.xml', goals: 'sonar:sonar'
+	}
+	
+	stage ('Upload') {
+		rtMaven.run pom: './pom.xml', goals: 'install', buildInfo: buildInfo
+	}
 }
