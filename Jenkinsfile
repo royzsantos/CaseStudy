@@ -2,6 +2,7 @@ node {
 	def server
 	def buildInfo
 	def rtMaven
+	def projectName
 	
 	stage ('Clone') {
 		cleanWs()
@@ -39,7 +40,7 @@ node {
 	}
 	
 	stage ('Deploy') {
-		echo currentBuild.fullProjectName
+		projectName = currentBuild.fullProjectName
 		bat 'deploy.bat'
 	}
 	
