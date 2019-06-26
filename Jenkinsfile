@@ -42,7 +42,8 @@ node {
 	
 	stage ('Deploy') {
 		projectName = currentBuild.fullProjectName
-		devEnv = 'C:\DevOpsGroup6-DEV'
+		devEnv = "C:\DevOpsGroup6-DEV"
+		
 		bat 'deploy.bat ' + devEnv + ' ' + projectName
 	}
 	
