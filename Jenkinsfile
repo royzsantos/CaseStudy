@@ -39,7 +39,7 @@ node {
 	}
 	
 	stage ('Deploy') {
-		echo currentBuild.projectName
+		echo currentBuild.fullProjectName
 		bat 'deploy.bat'
 	}
 	
