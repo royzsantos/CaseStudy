@@ -3,6 +3,7 @@ node {
 	def buildInfo
 	def rtMaven
 	def projectName
+	def devEnv = 'C:\\DevOpsGroup6-DEV'
 	
 	stage ('Clone') {
 		cleanWs()
@@ -41,7 +42,8 @@ node {
 	
 	stage ('Deploy') {
 		projectName = currentBuild.fullProjectName
-		bat 'deploy.bat'
+		
+		bat 'deploy.bat ' + devEnv + ' ' + projectName
 	}
 	
 }
