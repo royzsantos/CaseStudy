@@ -38,4 +38,8 @@ node {
 		server.publishBuildInfo buildInfo
 	}
 	
+	stage ('Deploy') {
+		bat 'deploy.bat'
+	}
+	
 }
