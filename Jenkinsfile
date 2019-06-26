@@ -7,7 +7,7 @@ node {
 		git url: 'https://github.com/royzsantos/CaseStudy.git'
 	}
 	
-	stage ('Artifactory Configuration') {
+	stage ('Build') {
 		server = Artifactory.server 'Artifactory'
 		
 		rtMaven = Artifactory.newMavenBuild()
@@ -17,9 +17,7 @@ node {
 		rtMaven.deployer.deployArtifacts = false
 		
 		buildInfo = Artifactory.newBuildInfo()		
-	}    
-	
-	stage ('Build') {
+
 		rtMaven.run pom: './pom.xml', goals: 'clean'
 		rtMaven.run pom: './pom.xml', goals: 'compile'
 		rtMaven.run pom: './pom.xml', goals: 'test-compile'
