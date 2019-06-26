@@ -3,7 +3,7 @@ node {
 	def buildInfo
 	def rtMaven
 	def projectName
-	def devEnv = 'C:\DevOpsGroup6-DEV'
+	def devEnv = 'C:\\DevOpsGroup6-DEV'
 	
 	stage ('Clone') {
 		cleanWs()
