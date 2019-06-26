@@ -39,7 +39,7 @@ node {
 	}
 	
 	stage ('Deploy') {
-		bat "cd"
+		bat 'deploy.bat'
 	}
 	
 }
