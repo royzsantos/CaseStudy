@@ -4,6 +4,7 @@ node {
 	def rtMaven
 	
 	stage ('Clone') {
+		cleanWs()
 		git url: 'https://github.com/royzsantos/CaseStudy.git'
 	}
 	
