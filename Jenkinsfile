@@ -37,7 +37,6 @@ node {
 		rtMaven.run pom: './pom.xml', goals: 'install', buildInfo: buildInfo
 		rtMaven.deployer.deployArtifacts buildInfo
 		server.publishBuildInfo buildInfo
-		//
 	}
 	
 }
