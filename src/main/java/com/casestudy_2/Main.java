@@ -4,7 +4,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		MessageUtil messageUtil = new MessageUtil("Hello World!!!");
+		MessageUtil messageUtil = new MessageUtil("Hello IBM World!");
 		
 		messageUtil.printMessage();
 		//
