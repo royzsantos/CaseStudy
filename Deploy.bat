@@ -8,7 +8,6 @@ echo Param2: %2
 echo %1\*.jar
 echo %1\%str%
 
-
 DEL %1\*.jar /Q
 RD %1\%str%
 MD %1\%str%
